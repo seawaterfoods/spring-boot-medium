@@ -1,14 +1,33 @@
 package com.joe.springbootmedium.form;
 
 import com.joe.springbootmedium.domain.User;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.BeanUtils;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class UserForm {
 
+    public static final String PHONE_REG="^([-_－—\\s\\(]?)([\\(]?)((((0?)|((00)?))(((\\s){0,2})|([-_－—\\s]?)))|(([\\)]?)[+]?))(886)?([\\)]?)([-_－—\\s]?)([\\(]?)[0]?[1-9]{1}([-_－—\\s\\)]?)[1-9]{2}[-_－—]?[0-9]{3}[-_－—]?[0-9]{3}$";
+
+    @NotBlank(message = "不可為空")
     private String username;
+
+    @NotBlank
+    @Length(min = 6 ,max = 24,message = "密碼須為6~24位之間")
     private String password;
+
+    @Pattern(regexp = PHONE_REG,message = "請輸入正確電話號碼")
     private String phone;
+
+    @Email(message = "請輸入正確的電子信箱")
+    @NotBlank
     private String email;
+
+    @NotBlank(message = "請輸入Email!")
+    @Length(min = 6 ,max = 24,message = "密碼須為6~24位之間")
     private String confirmPasswordId;
 
     public UserForm() {
@@ -52,6 +71,12 @@ public class UserForm {
 
     public void setConfirmPasswordId(String confirmPasswordId) {
         this.confirmPasswordId = confirmPasswordId;
+    }
+    public boolean confirmPassword(){
+        if (this.password.equals(this.confirmPasswordId)){
+            return true;
+        }
+        return false;
     }
 
     public User convertToUser(){
