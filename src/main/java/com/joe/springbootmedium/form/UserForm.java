@@ -12,10 +12,9 @@ public class UserForm {
 
     public static final String PHONE_REG="^([-_－—\\s\\(]?)([\\(]?)((((0?)|((00)?))(((\\s){0,2})|([-_－—\\s]?)))|(([\\)]?)[+]?))(886)?([\\)]?)([-_－—\\s]?)([\\(]?)[0]?[1-9]{1}([-_－—\\s\\)]?)[1-9]{2}[-_－—]?[0-9]{3}[-_－—]?[0-9]{3}$";
 
-    @NotBlank(message = "不可為空")
+    @NotBlank(message = "寢輸入名稱")
     private String username;
 
-    @NotBlank
     @Length(min = 6 ,max = 24,message = "密碼須為6~24位之間")
     private String password;
 
@@ -23,10 +22,9 @@ public class UserForm {
     private String phone;
 
     @Email(message = "請輸入正確的電子信箱")
-    @NotBlank
+    @NotBlank(message = "請輸入電子信箱")
     private String email;
 
-    @NotBlank(message = "請輸入Email!")
     @Length(min = 6 ,max = 24,message = "密碼須為6~24位之間")
     private String confirmPasswordId;
 

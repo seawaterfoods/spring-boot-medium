@@ -5,8 +5,8 @@ import com.joe.springbootmedium.domain.UserRepository;
 import com.joe.springbootmedium.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -21,7 +21,8 @@ public class LonginController {
 
 
     @GetMapping("/register")
-    public String registerPage(){
+    public String registerPage(Model model){
+        model.addAttribute("userForm",new UserForm());
         return "register";
     }
     @GetMapping("/login")
@@ -31,20 +32,11 @@ public class LonginController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid UserForm userForm, BindingResult result){
-        boolean boo=true;
+    public String register(@Valid UserForm userForm, BindingResult result, Model model){
         if  (!userForm.confirmPassword()){
             result.rejectValue("confirmPasswordId","confirmError","兩次密碼不一致");
-            boo =false;
         }
         if (result.hasErrors()){
-            List<FieldError> fieldErrors=result.getFieldErrors();
-            for (FieldError error:fieldErrors){
-                System.out.println(error.getField()+" : "+error.getDefaultMessage()+" : "+error.getCode());
-            }
-            boo=false;
-        }
-        if (!boo){
             return "register";
         }
         User user=userForm.convertToUser();
