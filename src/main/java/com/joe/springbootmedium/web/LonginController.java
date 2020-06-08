@@ -34,6 +34,7 @@ public class LonginController {
     @PostMapping("/register")
     public String register(@Valid UserForm userForm, BindingResult result, Model model){
         if  (!userForm.confirmPassword()){
+//            result.rejectValue可以指定傳遞變數的類型並且設置回傳訊息。
             result.rejectValue("confirmPasswordId","confirmError","兩次密碼不一致");
         }
         if (result.hasErrors()){

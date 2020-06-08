@@ -12,12 +12,17 @@ public class UserForm {
 
     public static final String PHONE_REG="^([-_－—\\s\\(]?)([\\(]?)((((0?)|((00)?))(((\\s){0,2})|([-_－—\\s]?)))|(([\\)]?)[+]?))(886)?([\\)]?)([-_－—\\s]?)([\\(]?)[0]?[1-9]{1}([-_－—\\s\\)]?)[1-9]{2}[-_－—]?[0-9]{3}[-_－—]?[0-9]{3}$";
 
-    @NotBlank(message = "寢輸入名稱")
+//    javax.validation.constraints內建置的錯誤驗證API，
+//    NotBlank可以確認由前端form表單傳入的資料是否為空。
+//    並可以通過message來設置回傳訊息。
+    @NotBlank(message = "請輸入名稱")
     private String username;
 
+//    @Length可以設置字元的最大值與最小值，同樣message可以設置回傳訊息。
     @Length(min = 6 ,max = 24,message = "密碼須為6~24位之間")
     private String password;
 
+//    @Pattern可以設置String的正則表達式來限制變數，同樣message可以設置回傳訊息。
     @Pattern(regexp = PHONE_REG,message = "請輸入正確電話號碼")
     private String phone;
 
@@ -70,6 +75,7 @@ public class UserForm {
     public void setConfirmPasswordId(String confirmPasswordId) {
         this.confirmPasswordId = confirmPasswordId;
     }
+//    判斷密碼是否相同，並返回boolean
     public boolean confirmPassword(){
         if (this.password.equals(this.confirmPasswordId)){
             return true;
@@ -81,6 +87,7 @@ public class UserForm {
         User user=new UserFormConvert().convert(this);
         return user;
     }
+
     private class UserFormConvert implements FormConver<UserForm,User> {
         @Override
         public User convert(UserForm userForm) {

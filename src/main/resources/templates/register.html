@@ -13,27 +13,27 @@
             <div class="form-group">
                 <label for="usernameId">用戶</label>
                 <input type="text" name="username" id="usernameId" class="form-control" th:field="*{username}">
-                <p class="form-control-static"th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                <p class="form-control-static text-danger"th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
             </div>
             <div class="form-group">
                 <label for="passwordId">密碼</label>
                 <input type="password" name="password" id="passwordId" class="form-control" th:field="*{password}">
-                <p class="form-control-static"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                <p class="form-control-static text-danger"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
             </div>
             <div class="form-group">
                 <label for="confirmPasswordId">確認密碼</label>
                 <input type="password" name="confirmPasswordId" id="confirmPasswordId" class="form-control"th:field="*{confirmPasswordId}">
-                <p class="form-control-static"th:if="${#fields.hasErrors('confirmPasswordId')}" th:errors="*{confirmPasswordId}"></p>
+                <p class="form-control-static text-danger"th:if="${#fields.hasErrors('confirmPasswordId')}" th:errors="*{confirmPasswordId}"></p>
             </div>
             <div class="form-group">
                 <label for="emailId">電子信箱</label>
                 <input type="text" name="email" id="emailId" class="form-control" th:field="*{email}">
-                <p class="form-control-static"th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                <p class="form-control-static text-danger"th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
             </div>
             <div class="form-group">
                 <label for="phoneId">手機電話</label>
                 <input type="text" name="phone" id="phoneId" class="form-control" th:field="*{phone}">
-                <p class="form-control-static"th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                <p class="form-control-static text-danger"th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
             </div>
             <p class="text-center">
                 <button type="submit" class="btn btn-primary">註   冊</button>
