@@ -45,6 +45,9 @@ public class LonginController {
         return "redirect:/login";
     }
 
-
+    @GetMapping("/exception")
+    public String textException(){
+        throw new RuntimeException();
+    }
 
 }
