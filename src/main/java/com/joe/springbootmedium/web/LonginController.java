@@ -47,7 +47,7 @@ public class LonginController {
 
     @GetMapping("/exception")
     public String textException(){
-        throw new RuntimeException();
+        throw new RuntimeException("測試異常處理");
     }
 
 }

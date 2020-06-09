@@ -35,20 +35,20 @@ public class BookController {
     }
 
 
-//    於Controller錯誤處理，只能處理這個Controller
-    @ExceptionHandler({Exception.class})
-    public ModelAndView handleException(HttpServletRequest request,Exception e) throws Exception {
-
-        logger.error("Request URL : {} , Exception : {}", request.getRequestURL(),e.getMessage());
-//      若有已設定異常狀態碼之異常則直接拋出
-        if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null){
-            throw e;
-        }
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("url",request.getRequestURL());
-        modelAndView.addObject("exception",e);
-        modelAndView.setViewName("error/error");
-
-        return modelAndView;
-    }
+////    於Controller錯誤處理，只能處理這個Controller
+//    @ExceptionHandler({Exception.class})
+//    public ModelAndView handleException(HttpServletRequest request,Exception e) throws Exception {
+//
+//        logger.error("Request URL : {} , Exception : {}", request.getRequestURL(),e.getMessage());
+////      若有已設定異常狀態碼之異常則直接拋出
+//        if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null){
+//            throw e;
+//        }
+//        ModelAndView modelAndView=new ModelAndView();
+//        modelAndView.addObject("url",request.getRequestURL());
+//        modelAndView.addObject("exception",e);
+//        modelAndView.setViewName("error/error");
+//
+//        return modelAndView;
+//    }
 }
