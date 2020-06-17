@@ -1,7 +1,6 @@
 package com.joe.springbootmedium.web;
 
 import com.joe.springbootmedium.domain.Book;
-import com.joe.springbootmedium.exception.BookNotFoundException;
 import com.joe.springbootmedium.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sun.security.provider.certpath.OCSPResponse;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
+
 
 @Controller
 @RequestMapping("/books")
@@ -35,9 +33,13 @@ public class BookController {
     }
 
 
+
+
+
+
 ////    於Controller錯誤處理，只能處理這個Controller
 //    @ExceptionHandler({Exception.class})
-//    public ModelAndView handleException(HttpServletRequest request,Exception e) throws Exception {
+//    public ModelAndView handleException(HttpServletRequest request, Exception e) throws Exception {
 //
 //        logger.error("Request URL : {} , Exception : {}", request.getRequestURL(),e.getMessage());
 ////      若有已設定異常狀態碼之異常則直接拋出
